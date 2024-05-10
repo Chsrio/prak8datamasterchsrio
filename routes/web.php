@@ -19,11 +19,17 @@ use App\Http\Controllers\EmployeeController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('/login');
 });
 
-Route::get('home', [HomeController::class, 'index'])->name('home');
+Route::middleware(['auth'])->group(function () {
+    Route::get('home', [HomeController::class, 'index'])->name('home');
 
-Route::get('profile', ProfileController::class)->name('profile');
+    Route::get('profile', ProfileController::class)->name('profile');
 
-Route::resource('employees', EmployeeController::class);
+    Route::resource('employees', EmployeeController::class);
+});
+
+Auth::routes();
+
+

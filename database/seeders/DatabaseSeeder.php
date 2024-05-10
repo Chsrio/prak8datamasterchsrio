@@ -14,7 +14,8 @@ public function run(): void
 {
 $this->call([
 PositionSeeder::class,
-EmployeeSeeder::class
+EmployeeSeeder::class,
+UserSeeder::class,
 ]);
 }
 }
